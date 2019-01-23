@@ -119,14 +119,16 @@ const courses = [
 
 const CourseCard = ({course}) => {
   return (
-    <Card>
-      <CardBody>
-        <CardTitle>{course.name}</CardTitle>
-        <CardText>{course.description}</CardText>
-      </CardBody>
-    </Card>
+    <div>
+      <Card>
+        <CardBody>
+          <CardTitle>{course.name}</CardTitle>
+          <CardText>{course.description}</CardText>
+        </CardBody>
+      </Card>
+    </div>
   );
-}
+};
 
 class Dashboard extends React.Component {
   render() {
