@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, CardText, CardBody, CardTitle } from 'reactstrap'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const CardCourse = styled(Card)`
   height: 100%;
@@ -31,20 +32,27 @@ const CardImage = styled.img`
   border-radius: 0.5em;
 `
 
-const CourseCard = ({course}) => {
+const CourseCard = ({id, highlight, name, description}) => {
   return (
-    <CardCourse data-testid={`card-course-${course.id}`}>
+    <CardCourse data-testid={`card-course-${id}`}>
       {
-        course.highlight &&
-          <div class="ribbon"><span>Em Alta</span></div>
+        highlight &&
+          <div className="ribbon" data-testid={`ribbon-course-${id}`}><span>Em Alta</span></div>
       }
-      <CardImage alt={`Capa Para o Curso ${course.name}`}  src={`/images/curso4.jpg`}></CardImage>
+      <CardImage alt={`Capa Para o Curso ${name}`}  src={`/images/curso4.jpg`}></CardImage>
       <CardBody>
-        <CardName>{course.name}</CardName>
-        <CardDescription>{course.description || "Sem descrição no momento"}</CardDescription>
+        <CardName>{name}</CardName>
+        <CardDescription>{description || "Sem descrição no momento"}</CardDescription>
       </CardBody>
     </CardCourse>
   )
+}
+
+CourseCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  highlight: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 }
 
 export default CourseCard;

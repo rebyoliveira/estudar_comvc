@@ -3,6 +3,7 @@ import { Row, Container } from 'reactstrap'
 import CourseSection from './CourseSection'
 import styled from 'styled-components'
 import Logo from './logo.png'
+import PropTypes from 'prop-types'
 
 const RowHeader = styled(Row)`
   background-color: #25a484;
@@ -49,6 +50,16 @@ class App extends React.Component {
       </>
     )
   }
+}
+
+App.propTypes = {
+  courses: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    highlight: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    generic: PropTypes.bool.isRequired,
+  })).isRequired
 }
 
 export default App;
