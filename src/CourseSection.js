@@ -1,17 +1,20 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
 import CourseCard from './CourseCard'
+import styled from 'styled-components'
 
+const ColCard = styled(Col)`
+  margin-bottom: 25px;
+`
 
 const CourseSection = ({courses}) => {
   return (
     <Row>
       {
         courses.map(course =>(
-          <Col key={course.id} xs={3} >
-            <img alt={`Capa Para o Curso ${course.name}`}  src={`/images/curso4.jpg`}></img>
+          <ColCard key={course.id} sm={6} md={6} xl={3}>
             <CourseCard course={course} />
-          </Col>
+          </ColCard>
         ))
       }
     </Row>
