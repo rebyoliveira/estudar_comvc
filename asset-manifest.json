@@ -1,7 +1,7 @@
 {
   "main.css": "/estudar_comvc/static/css/main.e6665ad5.chunk.css",
-  "main.js": "/estudar_comvc/static/js/main.c4b10fea.chunk.js",
-  "main.js.map": "/estudar_comvc/static/js/main.c4b10fea.chunk.js.map",
+  "main.js": "/estudar_comvc/static/js/main.cd01b041.chunk.js",
+  "main.js.map": "/estudar_comvc/static/js/main.cd01b041.chunk.js.map",
   "static/css/1.304a7810.chunk.css": "/estudar_comvc/static/css/1.304a7810.chunk.css",
   "static/js/1.fcfd3c64.chunk.js": "/estudar_comvc/static/js/1.fcfd3c64.chunk.js",
   "static/js/1.fcfd3c64.chunk.js.map": "/estudar_comvc/static/js/1.fcfd3c64.chunk.js.map",
@@ -10,6 +10,6 @@
   "static/css/1.304a7810.chunk.css.map": "/estudar_comvc/static/css/1.304a7810.chunk.css.map",
   "static/css/main.e6665ad5.chunk.css.map": "/estudar_comvc/static/css/main.e6665ad5.chunk.css.map",
   "index.html": "/estudar_comvc/index.html",
-  "precache-manifest.2e6b922b24e98b138c88a9884e297064.js": "/estudar_comvc/precache-manifest.2e6b922b24e98b138c88a9884e297064.js",
+  "precache-manifest.3c72c78dc5a9525934b495cced498d65.js": "/estudar_comvc/precache-manifest.3c72c78dc5a9525934b495cced498d65.js",
   "service-worker.js": "/estudar_comvc/service-worker.js"
 }
