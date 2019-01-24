@@ -1,6 +1,8 @@
 
 Olá, esse projeto foi criado utilizando [Create React App](https://github.com/facebook/create-react-app).
 
+[![Build Status](https://travis-ci.org/rebyoliveira/estudar_comvc.svg?branch=master)](https://travis-ci.org/rebyoliveira/estudar_comvc.svg?branch=master)
+
 ## Instruções
 
 ### `npm install` ou `yarn`
