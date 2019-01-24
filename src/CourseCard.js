@@ -39,7 +39,7 @@ const CourseCard = ({id, highlight, name, description}) => {
         highlight &&
           <div className="ribbon" data-testid={`ribbon-course-${id}`}><span>Em Alta</span></div>
       }
-      <CardImage alt={`Capa Para o Curso ${name}`}  src={`/images/curso4.jpg`}></CardImage>
+      <CardImage alt={`Capa Para o Curso ${name}`}  src={`${process.env.PUBLIC_URL}/images/curso4.jpg`}></CardImage>
       <CardBody>
         <CardName>{name}</CardName>
         <CardDescription>{description || "Sem descrição no momento"}</CardDescription>
