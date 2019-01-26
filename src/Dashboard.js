@@ -89,7 +89,7 @@ class Dashboard extends React.Component {
           <div data-testid="personalizedCourses">
             <CourseSection courses={personalizedCourses} />
           </div>
-          <SubTitle>Matérias gerais</SubTitle>
+          <SubTitle>Matérias Gerais</SubTitle>
           <div data-testid="genericCourses">
             <CourseSection courses={genericCourses} />
           </div>
