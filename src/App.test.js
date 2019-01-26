@@ -1,23 +1,44 @@
-import React from 'react';
-import { render, waitForElement } from 'react-testing-library';
+import React from 'react'
+import { render, waitForElement, fireEvent } from 'react-testing-library'
 import App from './App'
+import mockAxios from 'jest-mock-axios'
 import { courses } from './assets/courses.js'
 
-it('renders without crashing', async () => {
-  const { getByText} = render(<App courses={courses} />);
-
-  await waitForElement(() => getByText('Matérias personalizadas sem faculdade'));
+afterEach(() => {
+  mockAxios.reset()
 });
 
-it('renders without crashing', async () => {
-  const { getByText} = render(<App courses={courses} />);
+it('renders loading page and after renders course page', async () => {
+  const { getByText, queryByTestId } = render(<App />)
 
+  await waitForElement(() => getByText('Carregando'));
+  const responseObj = { data: courses, status: 200 };
+  await mockAxios.mockResponse(responseObj);
   await waitForElement(() => getByText('Matérias Gerais'));
 });
 
-it('renders all the courses cards', async () => {
-  const ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-  ids.map(async (id) => {
-    return await waitForElement(() => getByTestId(`card-course-${id}`));
-  })
-})
+it('renders loading page and return error page, retry and  renders course page', async () => {
+  const { getByText, queryByTestId } = render(<App />)
+
+  await waitForElement(() => getByText('Carregando'));
+  await mockAxios.mockError({});
+  await waitForElement(() => getByText('Ops, aconteceu um erro inesperado, tente novamente!'));
+
+  await fireEvent.click(getByText('Tentar novamente'));
+  await waitForElement(() => getByText('Carregando'));
+  const responseObj = { data: courses, status: 200 };
+  await mockAxios.mockResponse(responseObj);
+  await waitForElement(() => getByText('Matérias Gerais'));
+});
+
+it('renders loading page and return error page, retry and renders error page', async () => {
+  const { getByText, queryByTestId } = render(<App />)
+
+  await waitForElement(() => getByText('Carregando'));
+  await mockAxios.mockError();
+  await waitForElement(() => getByText('Ops, aconteceu um erro inesperado, tente novamente!'));
+  await fireEvent.click(getByText('Tentar novamente'));
+  await waitForElement(() => getByText('Carregando'));
+  await mockAxios.mockError();
+  await waitForElement(() => getByText('Ops, aconteceu um erro inesperado, tente novamente!'));
+});

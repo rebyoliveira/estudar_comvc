@@ -9,6 +9,13 @@ const ColCard = styled(Col)`
 `
 
 const CourseSection = ({courses}) => {
+  if (courses.length === 0) {
+    return (
+      <Row>
+        <h2>Sem Cursos</h2>
+      </Row>
+    )
+  }
   return (
     <Row>
       {

@@ -1,65 +1,51 @@
 import React from 'react'
-import { Row, Container } from 'reactstrap'
-import CourseSection from './CourseSection'
-import styled from 'styled-components'
-import Logo from './logo.png'
-import PropTypes from 'prop-types'
-
-const RowHeader = styled(Row)`
-  background-color: #25a484;
-`
-
-const Img = styled.img`
-  padding: 10px 30px 10px 30px;
-`
-
-const Title = styled.h1`
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
-  align-self: center;
-  margin-bottom: 0px;
-`
-
-const SubTitle = styled.h3`
-  font-family: 'Source Sans Pro', sans-serif;
-  color: rgb(89, 100, 127);
-  text-aling: center;
-  align-self: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-`
+import Dashboard from './Dashboard'
+import axios from 'axios'
 
 class App extends React.Component {
-  render() {
-    const { courses } = this.props
-    const genericCourses = courses.filter((course) => course.generic)
-    const personalizedCourses = courses.filter((course) => !course.generic)
+  state = {
+    loading: true,
+    error: false,
+    courses: [],
+  }
 
+  componentDidMount() {
+    this.fetchCourses()
+  }
+
+  retry = () => {
+    this.setState({loading: true, error: false}, () => {
+      this.fetchCourses()
+    })
+  }
+
+  fetchCourses = () => {
+    const _this = this
+    axios.get('https://raw.githubusercontent.com/estudarcomvoce/frontend-challenge/master/assets/courses.json')
+      .then(function (response) {
+        _this.setState({loading: false, courses: response.data})
+      })
+      .catch(function (error) {
+        _this.setState({loading: false, error: true})
+      })
+  }
+
+  render() {
+    if (this.state.loading === true) {
+      return <h1>Carregando</h1>
+    }
+    if (this.state.error === true) {
+      return (
+        <>
+          <h1>Ops, aconteceu um erro inesperado, tente novamente!</h1>
+          <button onClick={this.retry}>Tentar novamente</button>
+        </>
+      )
+    }
     return (
-      <>
-        <RowHeader>
-          <Img src={Logo} alt="Logo Estudar" size={40} />
-          <Title>Dashboard</Title>
-        </RowHeader>
-        <Container>
-          <SubTitle>Matérias personalizadas sem faculdade</SubTitle>
-          <CourseSection courses={genericCourses} />
-          <SubTitle>Matérias Gerais</SubTitle>
-          <CourseSection courses={personalizedCourses} />
-        </Container>
-      </>
+      <Dashboard courses={this.state.courses} />
     )
   }
-}
-
-App.propTypes = {
-  courses: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    highlight: PropTypes.bool.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    generic: PropTypes.bool.isRequired,
-  })).isRequired
 }
 
 export default App;
