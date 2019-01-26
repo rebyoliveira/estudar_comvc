@@ -1,32 +1,37 @@
 import React from 'react'
-import { Row, Container, InputGroup, Input } from 'reactstrap'
+import { Row, Col, Container, InputGroup, Input } from 'reactstrap'
 import CourseSection from './CourseSection'
 import styled from 'styled-components'
 import Logo from './logo.png'
+import User from './user.png'
 import PropTypes from 'prop-types'
 
 const RowHeader = styled(Row)`
   background-color: #25a484;
+  margin: 0px;
 `
 
 const Img = styled.img`
-  padding: 10px 30px 10px 30px;
+  // padding: 10px 30px 10px 30px;
 `
 
-const Title = styled.h2`
+const Title = styled.h1`
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
-  align-self: center;
   margin-bottom: 0px;
+  font-size: 30px;
 `
 
-const SubTitle = styled.h3`
+const SubTitle = styled.h2`
   font-family: 'Source Sans Pro', sans-serif;
   color: rgb(89, 100, 127);
-  text-aling: center;
   align-self: center;
-  margin-top: 20px;
+  margin-top: 25px;
   margin-bottom: 20px;
+`
+const ColNav = styled(Col)`
+  justify-content: flex-start;
+  align-self: center;
 `
 
 class Dashboard extends React.Component {
@@ -50,15 +55,34 @@ class Dashboard extends React.Component {
 
     return (
       <>
-        <RowHeader>
-          <div><Img src={Logo} alt="Logo Estudar" size={40} /></div>
-          <div><Title>Dashboard</Title></div>
-          <div>
-            <InputGroup>
-              <Input data-testid="searchBox" placeholder='Digite Para Pesquisar' onChange={this.handleChange} value={this.state.search} />
-            </InputGroup>
-          </div>
-        </RowHeader>
+        <div id="menu-small" className="d-md-none">
+          <RowHeader>
+            <ColNav xs ={2} sm={1} md={1} xl={1}>
+              <p><Img src={Logo} alt="Logo Estudar" size={40} style={{marginTop: 10}}/></p>
+            </ColNav>
+            <ColNav xs ={8} sm={9} md={4} xl={3}><Title>Sala de aula</Title></ColNav>
+            <ColNav xs ={2} sm={2} md={2} xl={2}><Img src={User} alt="Usuário" size={40} style={{float: 'right'}}/></ColNav>
+          </RowHeader>
+          <RowHeader>
+            <ColNav xs ={12} sm={12} md={5} xl={6} style={{marginBottom: 10}}>
+              <InputGroup>
+                <Input data-testid="searchBox" placeholder='Digite para pesquisar um curso :)' onChange={this.handleChange} value={this.state.search} />
+              </InputGroup>
+            </ColNav>
+          </RowHeader>
+        </div>
+        <div id="menu-medium" className="d-none d-md-block">
+          <RowHeader style={{padding: '10px 0px'}}>
+            <ColNav xs ={2} sm={1} md={1} xl={1}><Img src={Logo} alt="Logo Estudar" size={40}/></ColNav>
+            <ColNav xs ={8} sm={9} md={4} xl={3}><Title>Sala de aula</Title></ColNav>
+            <ColNav xs ={12} sm={12} md={5} xl={6}>
+              <InputGroup>
+                <Input data-testid="searchBox" placeholder='Digite para pesquisar um curso :)' onChange={this.handleChange} value={this.state.search} />
+              </InputGroup>
+            </ColNav>
+            <ColNav xs ={2} sm={2} md={2} xl={2}><Img src={User} alt="Usuário" size={40} style={{float: 'right', marginRight: 40}}/></ColNav>
+          </RowHeader>
+        </div>
         <Container>
 
           <SubTitle>Matérias personalizadas sem faculdade</SubTitle>
