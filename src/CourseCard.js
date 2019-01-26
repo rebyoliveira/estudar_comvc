@@ -131,7 +131,7 @@ class CourseCard extends React.Component {
             <CardImage src={`${process.env.PUBLIC_URL}/images/curso${id}.jpg`} alt={`Capa Para o Curso ${name}`}/>
             <Figcaption>
               <CardDescription>{description || "Sem descrição no momento"}</CardDescription>
-            </Figcaption><a alt={`Capa Para o Curso ${name}`} ></a>
+            </Figcaption>
             <CardNameContainer>
               <CardName>{name}</CardName>
               <div className="d-md-none" style={{margin: '0px 15px'}}>

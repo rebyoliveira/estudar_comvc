@@ -2,9 +2,7 @@ import React from 'react'
 import Dashboard from './Dashboard'
 import Carregando from './Carregando'
 import ErrorPage from './ErrorPage'
-import styled from 'styled-components'
 import axios from 'axios'
-
 
 class App extends React.Component {
   state = {

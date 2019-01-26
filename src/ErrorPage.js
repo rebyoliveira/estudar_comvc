@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Container, Spinner, Button } from 'reactstrap'
+import { Row, Container, Button } from 'reactstrap'
 import styled from 'styled-components'
 
 const MainDiv = styled(Row)`
