@@ -7,21 +7,31 @@ const CardMain = styled.div`
   height: 100%;
   border-radius:10px;
   border: 1px solid #ccc;
+  height: 270px;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
   }
 `
+
+const CardNameContainer  = styled.div`
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: #0000007a;
+  padding: 5px 0px
+`
+
 const CardName = styled.div`
   font-family: 'Source Sans Pro', sans-serif;
-  color: #28bd98;
+  color: #c4f5e8;
   text-aling: center;
   align-self: center;
   margin-top: 0px;
-  margin-bottom: 20px;
   font-size: 20px;
   cursor: pointer;
-  width: calc(100% - 30px);
+  width: 100%;
   padding: 0px 15px;
 `
 const CardImage = styled.img`
@@ -82,6 +92,7 @@ const Figure = styled.figure`
     color: transparent;
     background-color: transparent;
     width: 100%;
+    z-index: 1;
   }
   &:hover figcaption {
     padding-top: 20px;
@@ -117,13 +128,16 @@ class CourseCard extends React.Component {
               <div className="ribbon" data-testid={`ribbon-course-${id}`}><span>Em Alta</span></div>
           }
           <Figure>
-            <CardImage src={`${process.env.PUBLIC_URL}/images/curso4.png`} alt={`Capa Para o Curso ${name}`}/>
+            <CardImage src={`${process.env.PUBLIC_URL}/images/curso${id}.jpg`} alt={`Capa Para o Curso ${name}`}/>
             <Figcaption>
               <CardDescription>{description || "Sem descrição no momento"}</CardDescription>
             </Figcaption><a alt={`Capa Para o Curso ${name}`} ></a>
-            <div>
+            <CardNameContainer>
               <CardName>{name}</CardName>
-            </div>
+              <div className="d-md-none" style={{margin: '0px 15px'}}>
+                <span>{description || "Sem descrição no momento"}</span>
+              </div>
+            </CardNameContainer>
           </Figure>
         </CardMain>
       </>

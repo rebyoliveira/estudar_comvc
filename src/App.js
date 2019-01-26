@@ -1,6 +1,10 @@
 import React from 'react'
 import Dashboard from './Dashboard'
+import Carregando from './Carregando'
+import ErrorPage from './ErrorPage'
+import styled from 'styled-components'
 import axios from 'axios'
+
 
 class App extends React.Component {
   state = {
@@ -32,15 +36,10 @@ class App extends React.Component {
 
   render() {
     if (this.state.loading === true) {
-      return <h1>Carregando</h1>
+      return <Carregando />
     }
     if (this.state.error === true) {
-      return (
-        <>
-          <h1>Ops, aconteceu um erro inesperado, tente novamente!</h1>
-          <button onClick={this.retry}>Tentar novamente</button>
-        </>
-      )
+      return <ErrorPage retry={this.retry} />
     }
     return (
       <Dashboard courses={this.state.courses} />

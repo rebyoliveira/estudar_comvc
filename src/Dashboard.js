@@ -12,7 +12,7 @@ const RowHeader = styled(Row)`
 `
 
 const Img = styled.img`
-  // padding: 10px 30px 10px 30px;
+
 `
 
 const Title = styled.h1`
