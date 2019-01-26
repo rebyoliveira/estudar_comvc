@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/estudar_comvc/precache-manifest.a7483c93fe0537da41dbbf0f4c664122.js"
+  "/estudar_comvc/precache-manifest.dfa4e35f8992164cd73f88b18f438da5.js"
 );
 
 workbox.clientsClaim();
